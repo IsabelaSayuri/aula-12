@@ -1,0 +1,32 @@
+# sistema bancário
+
+#  Subsistemas
+class Conta:
+    def verificar_saldo(self):
+        print("Verificando saldo da conta")
+
+class Emprestimo:
+    def contratar(self):
+        print("Empréstimo contratado com sucesso!")
+
+class Seguranca:
+    def autenticar(self):
+        print("Autenticando usuário e permissões")
+
+# Fachada 
+class TransacaoFacade:
+    def __init__(self):
+        self.conta = Conta()
+        self.emprestimo = Emprestimo()
+        self.seguranca = Seguranca()
+
+    def realizar_transacao_completa(self):
+        print("- Iniciando Processo de Empréstimo -")
+        self.seguranca.autenticar()
+        self.conta.verificar_saldo()
+        self.emprestimo.contratar()
+        print("- Processo Finalizado -")
+
+# Cliente
+banco = TransacaoFacade()
+banco.realizar_transacao_completa()
